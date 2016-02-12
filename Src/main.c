@@ -73,7 +73,7 @@ void SystemClock_Config(void);
 
 int main(void)
 {
-
+hTxNumData=0x55;
   /* USER CODE BEGIN 1 */
 
   /* USER CODE END 1 */
@@ -91,77 +91,21 @@ int main(void)
   MX_I2C1_Init();
 
   /* USER CODE BEGIN 2 */
-
+hTxNumData=0x34;
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-	 HAL_I2C_Slave_Receive_IT(&hi2c1, (uint8_t*)&bTransferRequest, 1);
+
+		
+		
   while (1)
   {
-			 HAL_I2C_Slave_Receive_IT(&hi2c1, (uint8_t*)&bTransferRequest, 1);
-			    /* Initialize number of data variables */
-//    hTxNumData = 0;
-//    hRxNumData = 0;
-
-//		
-//		    /*##-2- Slave receive request from master ################################*/
-//    HAL_I2C_Slave_Receive_IT(&hi2c1, (uint8_t*)&bTransferRequest, 1);
-
-  /* Initialize number of data variables */
-    hTxNumData = 0;
-    hRxNumData = 0;
-
-    /*##-2- Slave receive request from master ################################*/
-   
-    
-//    /*  Before starting a new communication transfer, you need to check the current
-//    state of the peripheral; if itӳ busy you need to wait for the end of current
-//    transfer before starting a new one.
-//    For simplicity reasons, this example is just waiting till the end of the
-//    transfer, but application may perform other tasks while transfer operation
-//    is ongoing. */
-//    while (HAL_I2C_GetState(&hi2c1) != HAL_I2C_STATE_READY)
-//    {
-//    }
-
-//    /* If master request write operation #####################################*/
-//  
-//      /*##-3- Slave receive number of data to be read ########################*/
-//      while(HAL_I2C_Slave_Receive_IT(&hi2c1, (uint8_t*)&hRxNumData, 2)!= HAL_OK);
-
-//      /*  Before starting a new communication transfer, you need to check the current
-//      state of the peripheral; if itӳ busy you need to wait for the end of current
-//      transfer before starting a new one.
-//      For simplicity reasons, this example is just waiting till the end of the
-//      transfer, but application may perform other tasks while transfer operation
-//      is ongoing. */
-//      while (HAL_I2C_GetState(&hi2c1) != HAL_I2C_STATE_READY)
-//      {
-//      }
-
-//      /*##-4- Slave receives aRxBuffer from master ###########################*/
-//      while(HAL_I2C_Slave_Receive_IT(&hi2c1, (uint8_t*)aRxBuffer, hRxNumData)!= HAL_OK);
-
-//      /*  Before starting a new communication transfer, you need to check the current
-//      state of the peripheral; if itӳ busy you need to wait for the end of current
-//      transfer before starting a new one.
-//      For simplicity reasons, this example is just waiting till the end of the
-//      transfer, but application may perform other tasks while transfer operation
-//      is ongoing. */
-//      while (HAL_I2C_GetState(&hi2c1) != HAL_I2C_STATE_READY)
-//      {
-//      }
-
-  
-    
-    /* If master request write operation #####################################*/
-  
 		
 		 
 		
   /* USER CODE END WHILE */
-
+HAL_I2C_Slave_Transmit(&hi2c1, (uint8_t*)&hTxNumData, 1,100);
   /* USER CODE BEGIN 3 */
 
   }
