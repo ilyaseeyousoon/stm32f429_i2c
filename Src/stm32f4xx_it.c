@@ -76,13 +76,8 @@ void SysTick_Handler(void)
 */
 void I2C1_EV_IRQHandler(void)
 {
-//  /* USER CODE BEGIN I2C1_EV_IRQn 0 */
-//		    /*##-2- Slave receive request from master ################################*/
-//   HAL_I2C_Slave_Receive(&hi2c1, (uint8_t*)&bTransferRequest, 1,100);
-//	g=HAL_I2C_GetState(&hi2c1);
-//    /*##-2- Slave receive request from master ################################*/
-//    HAL_I2C_Slave_Receive_IT(&hi2c1, (uint8_t*)&aRxBuffer, 1);
-// k = hi2c1.Instance->DR;
+	
+	 HAL_I2C_Slave_Transmit(&hi2c1, (uint8_t*)&hTxNumData, 1,100);
 
 
       
